@@ -6,6 +6,12 @@ const blocSize = {
     y:CANVAS.height / 3,
 };
 
+let player = {
+    symbol : 'X',
+    first : true,
+    points : 0,
+}
+
 
 drawBackground();
 
