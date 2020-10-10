@@ -9,8 +9,6 @@ const blocSize = {
 
 drawBackground();
 
-drawX(0);
-
 
 
 function drawBackground() {
@@ -31,11 +29,10 @@ function drawBackground() {
 
 function drawX(bloc){
 
-    let center = getTopLeftCornerOfBloc(bloc);
+    let top = getTopLeftCornerOfBloc(bloc);
 
-
-    drawLine([0,0] , [50,50]);
-    drawLine([50,0] , [0,50]);
+    drawLine( [top.x , top.y] , [top.x + blocSize.x * 0.8 , top.y + blocSize.y * 0.8]);
+    drawLine( [top.x + blocSize.x * 0.8 , top.y] , [top.x , top.y + blocSize.y * 0.8]);
 
 }
 
@@ -48,7 +45,6 @@ function drawO(bloc){
     context.beginPath();
     context.arc(center.x, center.y, radius, 0, Math.PI * 2, true); // Outer circle
     context.stroke();
-
 }
 
 function drawLine(start , end){
@@ -61,7 +57,7 @@ function drawLine(start , end){
 
 function getCenterOfBloc(bloc) {
     let col = bloc % 3;
-    let row = bloc / 3;
+    let row = Math.floor(bloc / 3);
 
     return {
         x: blocSize.x * col + blocSize.x / 2,
@@ -71,4 +67,11 @@ function getCenterOfBloc(bloc) {
 
 function getTopLeftCornerOfBloc(bloc){
 
+    let col = bloc % 3;
+    let row = Math.floor(bloc / 3);
+
+    return {
+        x: blocSize.x * col + blocSize.x * 0.1,
+        y: blocSize.y * row + blocSize.y * 0.1,
+    }
 }
