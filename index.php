@@ -11,6 +11,7 @@ echo $twig->render('index.html.twig', [
         ['href' =>  'src/css/style.css'],
     ],
     'javascripts' => [
-        [ 'src' => 'src/js/game.js'],
+        [ 'src' => 'src/js/game_utils.js'],
+        [ 'src' => 'src/js/game_events.js'],
     ],
 ]);
