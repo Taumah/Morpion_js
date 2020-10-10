@@ -12,6 +12,8 @@ let player = {
     points : 0,
 }
 
+let game = [ null, null, null, null, null, null , null, null, null ];
+
 
 drawBackground();
 

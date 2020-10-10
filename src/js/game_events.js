@@ -5,6 +5,7 @@ button.addEventListener('click' , function(){
     context.clearRect(0, 0, CANVAS.width, CANVAS.height);
     drawBackground();
 
+    game = [ null, null, null, null, null, null , null, null, null ];
 } )
 
 
@@ -26,4 +27,46 @@ CANVAS.onclick = function getBlocFromClick(event) {
 
         }
     }
+
+    if (bloc !== null){
+        if (player.symbol === 'O'){
+            drawO(bloc);
+        }
+        else if(player.symbol === 'X'){
+            drawX(bloc);
+        }
+        else{
+            CANVAS.display = false;
+        }
+
+        game[bloc] = player.symbol;
+
+        CPUplay();
+    }
+}
+
+function CPUplay(){
+
+    let bloc;
+    let free = [];
+
+    for (let i = 0 ; i < game.length ; i++){
+        if (game[i] === null){
+            free.push(i);
+        }
+    }
+
+    let CPU_choice = Math.floor(Math.random() * free.length);
+
+    if (player.symbol === 'X'){
+        drawO(free[CPU_choice]);
+    }
+    else if(player.symbol === 'O'){
+        drawX(free[CPU_choice]);
+    }
+    game[free[CPU_choice]] = player.symbol === 'X' ?? '0';
+
+
+    console.log(game);
+
 }
