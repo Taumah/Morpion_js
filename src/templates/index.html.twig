@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% for style in styles %}
+        <link rel="stylesheet" href={{ style.href }}>
+    {% endfor %}
+
+{#    <link rel="stylesheet" href='src/css/style.css'>#}
+
+    <title>MORPION</title>
+</head>
+<body>
+Welcome {{ name }} !!
+
+<canvas id="game" width="200" height="200"></canvas>
+
+</body>
+
+
+{% for js in javascripts %}
+    <script type="text/javascript" src={{ js.src }}></script>
+
+{% endfor %}
+</html>
