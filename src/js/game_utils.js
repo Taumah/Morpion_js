@@ -12,6 +12,8 @@ let player = {
     points : 0,
 }
 
+displayWin();
+
 let game = [ null, null, null, null, null, null , null, null, null ];
 
 
@@ -82,4 +84,57 @@ function getTopLeftCornerOfBloc(bloc){
         x: blocSize.x * col + blocSize.x * 0.1,
         y: blocSize.y * row + blocSize.y * 0.1,
     }
+}
+
+function whoWon(){
+    let horizontal , vertical , diagonal , anti_diagonal;
+    horizontal = vertical = diagonal = anti_diagonal = 0;
+
+    for (let i = 0 ; i < 3 ; i++){
+        horizontal = 0;
+        for (let j = 0 ; j < 3 ; j++){
+            horizontal += game[i*3 + j];
+
+            vertical += game[j*3 + i]
+
+            if ( i + j === 2){
+                anti_diagonal += game[i*3 + j]
+            }
+
+            if( i === j ){
+                diagonal += game[i*3 + j];
+            }
+            if (horizontal === 3 || horizontal === -3){
+                console.log('stop');
+                return;
+            }
+
+            if (vertical === 3 || vertical === -3){
+                console.log('stop2');
+                return;
+
+            }
+
+            if (diagonal === 3 || diagonal === -3){
+                console.log('stop3');
+                return;
+
+            }
+            if (anti_diagonal === 3 || anti_diagonal === -3){
+                console.log('stop4');
+                return;
+
+            }
+
+
+
+        }
+    }
+}
+
+function displayWin(){
+    let p = document.getElementById('win_area');
+
+    p.textContent = "you won";
+
 }

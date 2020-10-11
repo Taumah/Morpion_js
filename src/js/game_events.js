@@ -39,7 +39,8 @@ CANVAS.onclick = function getBlocFromClick(event) {
             CANVAS.display = false;
         }
 
-        game[bloc] = player.symbol;
+        game[bloc] = player.symbol === 'X' ? -1 : 1;
+
 
         CPUplay();
     }
@@ -64,9 +65,10 @@ function CPUplay(){
     else if(player.symbol === 'O'){
         drawX(free[CPU_choice]);
     }
-    game[free[CPU_choice]] = player.symbol === 'X' ?? '0';
+    game[free[CPU_choice]] = player.symbol === 'X' ? 1 : -1;
 
 
     console.log(game);
 
+    whoWon();
 }
