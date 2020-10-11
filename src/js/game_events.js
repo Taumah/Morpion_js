@@ -28,7 +28,7 @@ CANVAS.onclick = function getBlocFromClick(event) {
         }
     }
 
-    if (bloc !== null){
+    if (bloc !== null && game[bloc] === null ){
         if (player.symbol === 'O'){
             drawO(bloc);
         }
@@ -42,13 +42,14 @@ CANVAS.onclick = function getBlocFromClick(event) {
         game[bloc] = player.symbol === 'X' ? -1 : 1;
 
 
-        CPUplay();
+        CPU_play();
+    }else {
+        console.log("can't play here");
     }
 }
 
-function CPUplay(){
+function CPU_play(){
 
-    let bloc;
     let free = [];
 
     for (let i = 0 ; i < game.length ; i++){

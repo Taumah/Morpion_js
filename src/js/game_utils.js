@@ -92,6 +92,7 @@ function whoWon(){
 
     for (let i = 0 ; i < 3 ; i++){
         horizontal = 0;
+        vertical = 0
         for (let j = 0 ; j < 3 ; j++){
             horizontal += game[i*3 + j];
 
@@ -104,30 +105,19 @@ function whoWon(){
             if( i === j ){
                 diagonal += game[i*3 + j];
             }
-            if (horizontal === 3 || horizontal === -3){
+            if (horizontal === 3 || vertical === 3 || diagonal === 3 || anti_diagonal === 3){
                 console.log('stop');
+                console.log( horizontal , vertical , diagonal , anti_diagonal);
+
                 return;
             }
 
-            if (vertical === 3 || vertical === -3){
+            if (horizontal === -3 || vertical === -3 || diagonal === -3 || anti_diagonal === -3){
                 console.log('stop2');
+
+                console.log( horizontal , vertical , diagonal , anti_diagonal);
                 return;
-
             }
-
-            if (diagonal === 3 || diagonal === -3){
-                console.log('stop3');
-                return;
-
-            }
-            if (anti_diagonal === 3 || anti_diagonal === -3){
-                console.log('stop4');
-                return;
-
-            }
-
-
-
         }
     }
 }
